@@ -1,10 +1,17 @@
 const employee = require('../mongo/Employee');
 exports.getAllemployeeDbQuery = (req, query, callback) => {
-  employee.find(query, (error, dbResponse) => {
+  var userProjection={
+    __V: false,
+    _id : false
+  };
+  employee.find(query, userProjection,(error, dbResponse) => {
+    
     if (error) {
       return callback(error);
     } else {
       console.log(dbResponse);
+      
+        
       
       if (dbResponse.length === 0) {
         return callback(error);

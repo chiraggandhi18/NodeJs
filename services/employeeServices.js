@@ -2,7 +2,7 @@ const { response } = require('express');
 const res = require('express/lib/response');
 const { getAllemployee } = require('../controllers/employeeController');
 const dbFunctions = require('../dbFunctions/dbFunctions');
-const arr={namee : "",empid : "", city : ""};
+
 
 exports.getAllemployee = (req, callback) => {
   console.log('employee service');
@@ -11,32 +11,12 @@ exports.getAllemployee = (req, callback) => {
     if (error) {
       return callback(error);
     } else {
-      return callback(null,mapemployeeResponseforall(response));
+      return callback(null,response);
     }
   });
 };
 
-const mapemployeeResponseforall = (response) =>{
-  //return response.forEach(element =>{
-    
-    
-    
-      for (let i = 0; i < response.length; i++) {
-         
-          arr.namee[i]=response[i].Name ,
-          arr.empid[i]=response[i].empId,
-          arr.city[i]=response[i].city 
-          
-        
-       
-  
-    
-      
-      }
-      return arr;
-  };
-    
-  
+
 
 
 
